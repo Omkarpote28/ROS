@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 
-import rclpy
+import rclpy  #import necessary libraries
 from rclpy.node import Node
 
-class MyNode(Node):
+class MyNode(Node): # modify name
     def __init__(self):
-        super().__init__("py_test")
-        self.counter =0
+        super().__init__("py_test") # modify name
+        self.counter =0 # clock counter is set to 0
         self.get_logger().info("Hello ROS2")
-        self.create_timer(0.5, self.timer_callback)
+        self.create_timer(0.5, self.timer_callback)  #it will call the timer_callback function after every 0.5sec
 
     def timer_callback(self):
-        self.counter += 1
-        self.get_logger().info("Hellow Omkar" + str(self.counter))    
+        self.counter += 1 # it will increment the values eg hello omkar1, hello omkar2 .......
+        self.get_logger().info("Hellow Omkar" + str(self.counter)) #information to be printed just like the print statement    
 
 def main(args=None):
-    rclpy.init(args=args)
-    node = MyNode()
-    rclpy.spin(node)
-    rclpy.shutdown()
+    rclpy.init(args=args) #it is used to initialize the node
+    node = MyNode() #modify name
+    rclpy.spin(node) 
+    rclpy.shutdown() #it is use to shutdown the node
 
 if __name__ == "__main__":
     main()
